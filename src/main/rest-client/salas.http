@@ -1,0 +1,43 @@
+###criando variaveis
+@host = localhost
+@port = 8080
+@pathproject = academico-web-api
+
+### lista das salas
+
+GET http://{{host}}:{{port}}/{{pathproject}}/salas
+
+### busca um endereco especifico por ID
+
+GET  http://{{host}}:{{port}}/{{pathproject}}/salas/29
+
+###
+POST http://{{host}}:{{port}}/{{pathproject}}/salas/
+Content-Type: application/json
+
+{
+    "numero": 1,
+    "capacidade": 40,
+    "laboratorio": false,
+    "possuiQuadroBranco": true,
+    "possuiArcondicionado": true
+    
+}
+
+### Atualizar todos os atributos do endereco
+
+PUT http://{{host}}:{{port}}/{{pathproject}}/salas/100
+Content-Type: application/json
+
+{
+     "numero": 2,
+    "capacidade": 40,
+    "laboratorio": false,
+    "possuiQuadroBranco": true,
+    "possuiArcondicionado": true
+    
+}
+###DELETAR
+DELETE http://{{host}}:{{port}}/{{pathproject}}/salas/25
+
+

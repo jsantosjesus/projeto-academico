@@ -1,0 +1,52 @@
+###criando variaveis
+@host = localhost
+@port = 8080
+@pathproject = academico-web-api
+
+### lista dos endereços
+
+GET http://{{host}}:{{port}}/{{pathproject}}/enderecos
+
+### busca um endereco especifico por ID
+
+GET  http://{{host}}:{{port}}/{{pathproject}}/enderecos/29
+
+###
+POST http://{{host}}:{{port}}/{{pathproject}}/enderecos/
+Content-Type: application/json
+
+{
+    "cep": 493000,
+    "rua": "antonio silvino i filho",
+    "bairro": "maria do carmo",
+    "cidade": "Tobias Barreto",
+    "estado": "SE",
+    "numero": 467
+    
+}
+
+### Atualizar todos os atributos do endereco
+
+PUT http://{{host}}:{{port}}/{{pathproject}}/enderecos/100
+Content-Type: application/json
+
+{
+    "cep": 493001,
+    "rua": "antonio alves",
+    "bairro": "maria do carmo",
+    "cidade": "Tobias Barreto",
+    "estado": "SE",
+    "numero": 467
+    
+}
+###DELETAR
+DELETE http://{{host}}:{{port}}/{{pathproject}}/enderecos/25
+
+### NÃO CRUD
+### Ativar e desativar um endereco
+
+PUT http://{{host}}:{{port}}/{{pathproject}}/enderecos/25/status
+Content-Type: text/plain
+
+DESATIVO
+

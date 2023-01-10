@@ -1,0 +1,99 @@
+@startuml academico-Db
+entity enderecos {
+        *id : integer <<sequence|not null>>
+        *cep : integer <<not null>>
+        *rua : character varying <<not null>>
+        *bairro : character varying <<not null>>
+        *cidade : character varying <<not null>>
+        *estado : character varying <<not null>>
+        --
+        id : <<primary key>>
+    }
+
+    entity professores {
+        *matricula : integer <<not null>>
+        *nome : character varying <<not null>>
+        *sobrenome : character varying <<not null>>
+        *idade : integer <<not null>>
+        *naturalidade : character varying <<not null>>
+        *sexo : char <<not null>>
+        *cpf : character varying <<not null>>
+        *salario : double <<not null>>
+        *carga_horaria: integer <<not null>>
+        *id_endereco : integer <<not null>>
+        *id_turma : integer <<not null>>
+        --
+        matricula : <<primary key>>
+        id_endereco : <<foreign key>> 
+        id_turma: <<foreign key>>
+    }
+
+    entity alunos {
+        *matricula : integer <<not null>>
+        *nome : character varying <<not null>>
+        *sobrenome : character varying <<not null>>
+        *idade : integer <<not null>>
+        *naturalidade : character varying <<not null>>
+        *sexo : char <<not null>>
+        *cpf : character varying <<not null>>
+        *curso : character varying <<not null>>
+        *matriculado : boolean <<not null>>
+        *aprovado: boolean <<not null>>
+        *id_endereco : integer <<not null>>
+        *id_turma : integer <<not null>>
+        --
+        matricula : <<primary key>>
+        id_endereco : <<foreign key>>
+        id_turma: <<foreign key>>
+    }
+
+    entity notas {
+        *id : integer <<sequence|not null>>
+        *valor : real <<not null>>
+        *peso : integer <<not null>>
+        *matricula_aluno : integer <<not null>>
+        --
+        id : <<primary key>>
+        matricula_aluno : <<foreign key>> 
+    }
+
+    entity salas{
+        *id : integer <<sequence|not null>>
+        *numero : integer <<not null>>
+        *capacidade : integer <<not null>>
+        *laboratorio : boolean <<not null>>
+        *possuiQuadroBranco : boolean <<not null>>
+        *possuiArCondicionado : boolean <<not null>>
+        *id_turma : integer <<not null>>
+        --
+        id : <<primary key>>
+        id_turma: <<foreign key>>
+    }
+
+    entity disciplinas{
+         *id : integer <<sequence|not null>>
+        *nome : character <<not null>>
+        *caragaHoraria : integer <<not null>>
+         *id_turma : integer <<not null>>
+        --
+        id : <<primary key>>
+        id_turma: <<foreign key>>
+    }
+
+    entity turma{
+         *id : integer <<sequence|not null>>
+        *nome : character <<not null>>
+        *Periodo : character <<not null>>
+        --
+        id : <<primary key>>
+    }
+
+    professores }o--|| enderecos
+    alunos }o--|| enderecos
+    alunos ||--|{ notas
+    turma ||--|{ alunos
+    turma ||--|{ salas
+    turma ||--|| professores
+    turma ||--|| disciplinas
+
+@enduml academico-db

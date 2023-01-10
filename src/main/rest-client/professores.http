@@ -1,0 +1,48 @@
+###criando variaveis
+@host = localhost
+@port = 8080
+@pathproject = academico-web-api
+
+### lista dos professores
+
+GET http://{{host}}:{{port}}/{{pathproject}}/professores
+
+### busca um professor especifico por ID
+
+GET  http://{{host}}:{{port}}/{{pathproject}}/professores/23
+
+###
+POST http://{{host}}:{{port}}/{{pathproject}}/profesores/
+Content-Type: application/json
+
+{
+    "matricula": 01,
+   "nome": "Crhistiano",
+    "sobrenome": "Santos", 
+    "idade": 35,
+    "naturalidade": "Brasileiro",
+    "sexo": "Masculino",
+    "cpf": "059",
+    "salario": 10000,
+    "cargaHoraria": 40
+}
+
+### Atualizar todos os atributos do aluno
+
+PUT http://{{host}}:{{port}}/{{pathproject}}/professores/23
+Content-Type: application/json
+
+{
+   "matricula": 01,
+   "nome": "Diego",
+    "sobrenome": "Santos", 
+    "idade": 42,
+    "naturalidade": "Brasileiro",
+    "sexo": "Masculino",
+    "cpf": "045",
+   "salario": 12000,
+   "cargaHoraria": 40
+    
+}
+###DELETAR
+DELETE http://{{host}}:{{port}}/{{pathproject}}/professores/25

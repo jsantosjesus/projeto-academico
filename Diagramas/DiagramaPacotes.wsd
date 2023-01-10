@@ -1,0 +1,62 @@
+@startuml academico
+
+package br.com.academico.endereco <<node>>{
+    Class Endereco
+}
+
+package br.com.academico.professor <<node>>{
+    Class Professor
+}
+
+package br.com.academico.aluno <<node>>{
+    Class Aluno
+    enum SituacaoAluno
+    Aluno*-- Nota
+}
+
+package br.com.academico.pessoa <<node>>{
+    Class Pessoa
+    Pessoa o-- Endereco
+    Pessoa<|-- Aluno
+    Pessoa<|-- Professor
+}
+
+package br.com.academico.projeto <<node>>{
+    Class Projeto
+    IProjeto<|-- Aluno
+    IProjeto<|-- Professor
+}
+
+package br.com.academico.evento <<node>>{
+    Class Evento
+    IEvento<|-- Aluno
+    IEvento<|-- Professor
+}
+
+package br.com.academico.turma <<node>>{
+    Class Turma
+}
+
+package br.com.academico.disciplina <<node>>{
+    Class Disciplina
+}
+
+package br.com.academico.sala <<node>>{
+    Class Sala
+}
+
+package br.com.academico.turma <<node>>{
+    Class Turma
+    Turma o--Professor
+    Turma o--Sala
+    Turma o--Disciplina
+    Turma o--Aluno
+}
+
+package br.com.academico.serializacao <<node>>{
+    class CriarArquivo
+    class LerArquivo
+}
+
+
+@enduml

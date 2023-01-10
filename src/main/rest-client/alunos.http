@@ -1,0 +1,56 @@
+###criando variaveis
+@host = localhost
+@port = 8080
+@pathproject = academico-web-api
+
+### lista dos alunos
+
+GET http://{{host}}:{{port}}/{{pathproject}}/alunos
+
+### busca um aluno especifico por ID
+
+GET  http://{{host}}:{{port}}/{{pathproject}}/alunos/23
+
+###
+POST http://{{host}}:{{port}}/{{pathproject}}/alunos
+Content-Type: application/json
+
+{
+    "matricula": 01,
+   "nome": "Jadson",
+    "sobrenome": "Santos", 
+    "idade": 22,
+    "naturalidade": "Brasileiro",
+    "sexo": "Masculino",
+    "cpf": "055",
+    "curso": "TI",
+    "estaMatriculado": true,
+    "media": 6,
+    "ponderada": 6,
+    "aprovado": true,
+    "situacaoAluno": "aprovado"
+}
+
+### Atualizar todos os atributos do aluno
+
+PUT http://{{host}}:{{port}}/{{pathproject}}/alunos/100
+Content-Type: application/json
+
+{
+   "matricula": 01,
+   "nome": "Jadson",
+    "sobrenome": "Santos", 
+    "idade": 22,
+    "naturalidade": "Brasileiro",
+    "sexo": "Masculino",
+    "cpf": "055",
+    "curso": "TI",
+    "estaMatriculado": true,
+    "media": 6.5,
+    "ponderada": 6.75,
+    "aprovado": true,
+    "situacaoAluno": "aprovado"
+    
+}
+###DELETAR
+DELETE http://{{host}}:{{port}}/{{pathproject}}/alunos/25

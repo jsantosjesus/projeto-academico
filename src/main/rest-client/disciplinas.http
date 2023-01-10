@@ -1,0 +1,34 @@
+###criando variaveis
+@host = localhost
+@port = 8080
+@pathproject = academico-web-api
+
+### lista das disciplinas
+
+GET http://{{host}}:{{port}}/{{pathproject}}/disciplinas
+
+### busca uma disciplina especifico por ID
+
+GET  http://{{host}}:{{port}}/{{pathproject}}/disciplinas/23
+
+###
+POST http://{{host}}:{{port}}/{{pathproject}}/disciplinas/
+Content-Type: application/json
+
+{
+    "nome": "Programacao",
+    "cargaHoraria": "34"   
+}
+
+### Atualizar todos os atributos do disciplina
+
+PUT http://{{host}}:{{port}}/{{pathproject}}/disciplinas/100
+Content-Type: application/json
+
+{
+    "nome": "Banco de dados",
+    "cargaHoraria": "40" 
+    
+}
+###DELETAR
+DELETE http://{{host}}:{{port}}/{{pathproject}}/disciplinas/25

@@ -1,0 +1,126 @@
+@startuml Academico
+
+Class App{
+    {static} void main()
+}
+abstract Class Pessoa{
+    -int matricula
+    -String nome
+    -String sobrenome
+    -int idade
+    -String naturalidade
+    -char sexo
+    -String cpf
+    -Endereco endereco
+
+    {abstract} int gerarMatricula()
+
+}
+Class Nota{
+    -double valor
+    -int peso
+}
+
+enum StatusEndereco{
+    ativo 
+    desativo
+}
+Class Endereco{
+    -int CEP
+    -String rua
+    -String bairro
+    -String cidade
+    -String estado
+    -int numero
+}
+
+Class Aluno{
+    -String curso
+    -boolean estaMatriculado
+    -double media
+    -double mediaPonderada
+    -boolean aprovado
+    -String situacao
+    -Turma turma
+
+    +int gerarMatricula()
+    +void calcularMediaAritimetica()
+    +void calcularMediaPonderada()
+    -void situacao()
+    -List<Nota> notas
+
+    -{static} int quantidadeAlunos
+    -{static} String nomeInstituicao
+
+}
+
+Class Professor{
+    -float salario
+    -int cargaHoraria
+
+    +int gerarMatricula()
+}
+
+Class Sala{
+    -int numero
+    -int capacidade
+    -boolean possuiArcondicionado
+    -boolean possuiQuadroBranco
+    -boolean laboratorio
+}
+
+Class Disciplina{
+    -String nome
+    -int cargaHoraria
+
+}
+
+Class Turma{
+    -String nome
+    -String periodo
+    -Professor Professor
+    -Disciplina disciplina
+    -double mediaNotas
+    -List<Aluno> alunos
+    -List<Sala> salas
+
+    +void calcularMedia()
+
+}
+
+interface IProjeto #aliceblue ##[dotted]blue {
+    +void submeterProjetoPesquisa()
+    +void submeterProjetoExtensao()
+}
+
+interface IEvento #aliceblue ##[dotted]blue {
+    +void inscrever()
+}
+
+enum situacaoAluno{
+    aprovado
+    recuperacao
+    reprovado
+}
+
+App -- Aluno
+App -- Professor
+App -- Turma
+
+Pessoa<|-- Aluno
+Pessoa<|-- Professor
+Pessoa o-- "0..1"  Endereco : contém >
+Aluno *-- "2..4" Nota : contém >
+Turma o-- "0..1"  Professor : contém >
+Turma o-- "0..1"  Disciplina : contém >
+Turma o-- "0..x" Sala : contém >
+Turma o-- "0..x" Aluno : contém >
+
+Endereco o-- "1..1" StatusEndereco : contém >
+
+IProjeto <|.. Professor
+IProjeto <|.. Aluno
+IEvento <|.. Professor
+IEvento <|.. Aluno
+
+@enduml
